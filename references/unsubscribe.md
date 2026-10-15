@@ -14,7 +14,10 @@ Check only the top 20 cleanup-candidate senders. For each, fetch the headers of 
 
 - `one-click`: an HTTPS `List-Unsubscribe` target plus `List-Unsubscribe-Post: List-Unsubscribe=One-Click`.
 - `mailto-only`: only a `mailto:` target.
-- `none`: no `List-Unsubscribe` header, or the headers are unavailable.
+- `none`: no `List-Unsubscribe` header.
+- `headers unavailable`: the connected surface does not return headers without the body.
+
+If headers are only available together with the body (for example, the metadata-only view returns no headers and only a full or raw fetch does), skip the header check: do not fetch the body to get them. Record every candidate sender as `headers unavailable`; they are handled as in `list` mode, through the provider's subscription page (Gmail: **Manage subscriptions**).
 
 Do not visit, test, or copy the URLs into the report. Senders listed as preserved in `config.yaml`, and senders whose mail falls under the classification guide's preserve rules (for example, a store that also sends receipts), are not candidates; list them as "kept" with the reason.
 
@@ -23,7 +26,7 @@ Do not visit, test, or copy the URLs into the report. Senders listed as preserve
 Put the candidates in one numbered item with sub-numbers, one per sender (`3.1`, `3.2`, ...), showing the sender, message count, header result, and how it will be handled:
 
 - In `provider` mode: `one-click` and `mailto-only` senders are handled by the provider control. State in the item that, for `mailto-only` senders, the provider itself may send an unsubscribe email on the user's behalf.
-- `none` senders, and every sender in `list` mode: manual. Point the user to the provider's subscription page when it has one (Gmail: **Manage subscriptions** in the left menu), otherwise to a filter suggestion.
+- `none` and `headers unavailable` senders, and every sender in `list` mode: manual. Point the user to the provider's subscription page when it has one (Gmail: **Manage subscriptions** in the left menu), otherwise to a filter suggestion.
 
 ## Execute (`provider` mode only)
 

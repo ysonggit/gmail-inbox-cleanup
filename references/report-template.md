@@ -6,6 +6,7 @@
 - **Assessment:** read-only; no messages changed
 - **Private candidate snapshot:** `<local file under reports/ containing item-to-message IDs and account; never publish>`
 - **Cutoff:** `<exact generation timestamp>`; for Gmail API search use `before:<Unix seconds>` when supported; otherwise record the cutoff limitation
+- **Scanned window:** `<recent stage: ~250 newest threads per category, dates covered>`; `<older mail: senders followed by sender-scoped metadata-only queries>`; other older mail not scanned
 
 ## Proposed actions
 
@@ -42,7 +43,7 @@ Mode: `<off / list / provider>`. See the unsubscribe guide.
 
 | # | Sender | Messages | Headers | Handling |
 |---|---|---:|---|---|
-| `<3.1>` | `<sender>` | `<N>` | `<one-click / mailto-only / none>` | `<provider control / manual: Manage subscriptions / filter suggestion>` |
+| `<3.1>` | `<sender>` | `<N>` | `<one-click / mailto-only / none / headers unavailable>` | `<provider control / manual: Manage subscriptions / filter suggestion>` |
 
 <!-- In provider mode, note that the provider may send an unsubscribe email for mailto-only senders. -->
 
@@ -57,7 +58,7 @@ Reply with exact item numbers and actions, for example `approve 1,3`. No changes
 - **Pre-execution ID check:** `<approved IDs still present / dropped; stop and re-report if >10% dropped>`
 - **Actions completed:** `<message and conversation counts by item; operation used: bulk / per-thread / per-ID>`
 - **Unsubscribe:** `<sender: requested / not available / failed>`
-- **Failures/skipped items:** `<details>`
+- **Failures/skipped items:** `<details; IDs retried after transient errors>`
 - **Verification:** `<Inbox query results>`
 - **Recovery:** Find messages by `<cleanup/YYYY-MM-DD>`; restore archived mail to Inbox or restore Trash mail within the recovery window. Trash was not emptied.
 - **Storage:** `<not freed by archive/Trash; only report a refreshed provider storage meter>`
