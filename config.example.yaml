@@ -18,4 +18,4 @@ accounts:
       - personal_messages
       - direct_recruiter_messages
       - job_alerts # remove only if you want job-alert digests considered
-    monthly_rules: []
+    monthly_rules: [] # optional extra items; the standard Promotions scan always runs

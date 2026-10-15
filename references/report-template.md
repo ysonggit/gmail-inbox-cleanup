@@ -11,7 +11,7 @@
 
 ### 1. `<short category>`
 - **Query:** `<exact provider query, including before: cutoff>`
-- **Matched:** `<N>` messages in `<M>` conversations/threads
+- **Matched:** `<N>` messages in `<M>` conversations/threads (after risk exclusions; exactly the IDs that will be acted on)
 - **Main senders:** `<sender — count>`
 - **Sample subjects:** (3–5, or all available when fewer; mask sensitive identifiers/codes)
   - `<subject>`
@@ -54,7 +54,7 @@ Reply with exact item numbers and actions, for example `approve 1,3`. No changes
 
 - **Approved item numbers:** `<none until approval>`
 - **Snapshot:** `<private file with item IDs and unread state>`
-- **Pre-execution counts:** `<counts; stop and re-report if any differ by >10%>`
+- **Pre-execution ID check:** `<approved IDs still present / dropped; stop and re-report if >10% dropped>`
 - **Actions completed:** `<message and conversation counts by item; operation used: bulk / per-thread / per-ID>`
 - **Unsubscribe:** `<sender: requested / not available / failed>`
 - **Failures/skipped items:** `<details>`
