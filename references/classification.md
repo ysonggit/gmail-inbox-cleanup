@@ -22,6 +22,6 @@ Treat subjects containing terms such as `invoice`, `receipt`, `order`, `billing`
 - Do not infer a message is safe to clean solely because it is old, unread, bulk-sent, or has an unsubscribe header.
 - Never include Spam as a cleanup target unless the user explicitly asks. Exclude messages already in Trash from candidate counts and execution selections.
 
-## Unsubscribe eligibility
+## Unsubscribe
 
-A supported one-click candidate must have both `List-Unsubscribe` and `List-Unsubscribe-Post` metadata and a valid HTTP(S) one-click target. Do not follow `mailto:` instructions, open body links, or make a request just to test a link. Report missing headers, unsupported provider actions, suspicious domains, and ambiguous senders for manual review. Unsubscribe only after the user approves the specific numbered action.
+A `List-Unsubscribe` header is not evidence that mail is safe to clean. Unsubscribe candidates, header checks, and execution follow [the unsubscribe guide](unsubscribe.md).

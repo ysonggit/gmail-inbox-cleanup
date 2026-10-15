@@ -26,16 +26,24 @@ Reports are conversation responses and local files; this skill does not implemen
 
 If the mail integration lacks an operation, an agent with Computer Use / browser access may use the mail provider's web interface under the same account, scope, and approval rules. Browser assistance does not bypass metadata-only assessment or permit clicking links in email bodies.
 
-Automatic unsubscribe is limited to verified RFC 8058 one-click mechanisms, handled through a supported integration or the provider's own verified one-click UI. Unsupported mechanisms, external preference pages, and ambiguous outcomes are listed for manual review. A browser is an optional capability, not a guarantee that every list can be unsubscribed.
+Unsubscribe has three modes, set in `config.yaml`: `off`, `list` (default; the report lists senders for you to unsubscribe by hand, for example from Gmail's **Manage subscriptions** page), and `provider`. In `provider` mode, after you approve specific senders, the agent uses the mail provider's own unsubscribe control, so the provider makes the safety checks. The agent never opens unsubscribe links itself. For senders that only offer email-based unsubscribe, the provider may send an unsubscribe email for you; the report says so before you approve. External preference pages, forms, and ambiguous outcomes are listed for manual handling. See [the unsubscribe guide](references/unsubscribe.md).
+
+## Large mailboxes
+
+Assessment reads paginated search results instead of opening messages one by one, and scans up to 5,000 results per query (a later run picks up the rest). Execution uses the fastest operation your mail integration supports: bulk by ID list, then per thread, then per message. It works in chunks of 500 with a progress line per chunk, so you can stop between chunks. Speed still depends on your integration; one that only supports single-message changes will be slow on thousands of messages.
 
 The skill never permanently deletes mail, empties Trash, sends/replies/forwards mail, or creates suggested filters. Archive and Trash actions can be recovered using the cleanup label and provider recovery window. Moving mail to Trash does not itself prove storage was freed.
 
 ## Privacy and sharing
 
-Share only `SKILL.md`, `README.md`, `config.example.yaml`, `.gitignore`, and the `references/` documents. Your account configuration, reports, message IDs, previous mail state, and unsubscribe tokens are private. Reports may expose senders and subjects even though bodies are not read. Financial identifiers and authentication codes should be masked in examples.
+Share only `SKILL.md`, `README.md`, `LICENSE`, `config.example.yaml`, `.gitignore`, and the `references/` documents. Your account configuration, reports, message IDs, and unsubscribe URLs are private. Reports may expose senders and subjects even though bodies are not read. Financial identifiers and authentication codes should be masked in examples.
 
 The included `.gitignore` excludes private configuration, reports, and common credential/backup files. It cannot remove information already committed to Git history. Do not upload your installed skill folder wholesale; prepare a separate public copy containing only the files listed above. Never attach real reports or private configuration to issues or screenshots.
 
 These are instructions for an AI agent, not a permission sandbox. Safety also depends on the agent following them and on the permissions you grant its mail/browser integration. Use read-only access for assessment where available, review numbered proposals, and keep recovery options in mind before approving changes.
 
 Technical references: [Gmail date filtering](https://developers.google.com/workspace/gmail/api/guides/filtering), [RFC 8058](https://www.rfc-editor.org/rfc/rfc8058.html), and [GitHub ignoring files](https://docs.github.com/en/get-started/git-basics/ignoring-files).
+
+## License
+
+[MIT](LICENSE)

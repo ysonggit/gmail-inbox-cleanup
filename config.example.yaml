@@ -5,7 +5,7 @@ accounts:
     provider: gmail # gmail or outlook
     retention_period: 90d
     default_action: archive # archive or trash; default is archive
-    unsubscribe: false
+    unsubscribe: list # off, list (report only), or provider (use the provider's own unsubscribe control after approval)
     preserve_categories:
       - receipts
       - orders

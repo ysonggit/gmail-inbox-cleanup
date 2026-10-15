@@ -38,9 +38,13 @@
 
 ## Unsubscribe review
 
-| Sender | Messages | RFC 8058 headers | Suggested handling |
-|---|---:|---|---|
-| `<sender>` | `<N>` | `<both present / missing / unsupported>` | `<numbered approval item / manual review>` |
+Mode: `<off / list / provider>`. See the unsubscribe guide.
+
+| # | Sender | Messages | Headers | Handling |
+|---|---|---:|---|---|
+| `<3.1>` | `<sender>` | `<N>` | `<one-click / mailto-only / none>` | `<provider control / manual: Manage subscriptions / filter suggestion>` |
+
+<!-- In provider mode, note that the provider may send an unsubscribe email for mailto-only senders. -->
 
 ## Approval instructions
 
@@ -49,9 +53,10 @@ Reply with exact item numbers and actions, for example `approve 1,3`. No changes
 ## Execution and verification log
 
 - **Approved item numbers:** `<none until approval>`
-- **Prior message state:** `<private snapshot of labels, Inbox/Trash location, and read state for recovery>`
+- **Snapshot:** `<private file with item IDs and unread state>`
 - **Pre-execution counts:** `<counts; stop and re-report if any differ by >10%>`
-- **Actions completed:** `<message and conversation counts by item>`
+- **Actions completed:** `<message and conversation counts by item; operation used: bulk / per-thread / per-ID>`
+- **Unsubscribe:** `<sender: requested / not available / failed>`
 - **Failures/skipped items:** `<details>`
 - **Verification:** `<Inbox query results>`
 - **Recovery:** Find messages by `<cleanup/YYYY-MM-DD>`; restore archived mail to Inbox or restore Trash mail within the recovery window. Trash was not emptied.
