@@ -1,0 +1,21 @@
+# Copy this file to config.yaml and fill it in locally. Never commit config.yaml.
+version: 1
+accounts:
+  - email: you@example.com
+    provider: gmail # gmail or outlook
+    retention_period: 90d
+    default_action: archive # archive or trash; default is archive
+    unsubscribe: false
+    preserve_categories:
+      - receipts
+      - orders
+      - invoices
+      - billing
+      - delivery
+      - account_security
+      - service_status
+      - collaboration
+      - personal_messages
+      - direct_recruiter_messages
+      - job_alerts # remove only if you want job-alert digests considered
+    monthly_rules: []

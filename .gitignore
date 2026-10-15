@@ -1,0 +1,15 @@
+# Local account settings, reports, and candidate snapshots
+config*.yaml
+!config.example.yaml
+reports/
+# Credentials and local/editor artifacts
+.env
+.env.*
+credentials*
+token*
+*.pem
+*.key
+*.bak
+*.swp
+*~
+.DS_Store
